@@ -1,4 +1,4 @@
-<div class="w-full max-w-[520px] relative" 
+<div class="w-full max-w-[400px] relative" 
      x-data="{ isOpen: false }" 
      x-on:click.outside="isOpen = false">
 

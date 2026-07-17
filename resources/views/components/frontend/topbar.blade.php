@@ -5,7 +5,7 @@
             {{-- Left Side: Quick Navigation --}}
             <div class="flex items-center justify-center md:justify-start gap-4">
                 <a href="#" class="flex items-center gap-1.5 text-white/90 hover:text-white transition font-medium">
-                    <x-phosphor-map-pin class="size-3.5 text-white/80" />
+                    <x-phosphor-map-pin-simple-area-light class="size-3.5 text-white/80" />
                     <span>Find Store</span>
                 </a>
 
