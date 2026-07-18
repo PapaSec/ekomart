@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,10 +14,18 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->nullable()->unique(); // For delivery tracking & SMS updates
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('avatar')->nullable(); // Stores the file path for the profile image
+            $table->string('status')->default('active'); // active, banned, suspended
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes(); // Safe account deletion
+
+            // Database Indexes for high performance
+            $table->index('status');
+            $table->index('phone');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
