@@ -57,6 +57,9 @@
         {{ $slot }}
     </main>
 
+    <!-- Global Auth Side Panel Slider -->
+    @include('partials.auth-drawer')
+
     <!-- Cookie Consent -->
 
     <!-- Footer -->
