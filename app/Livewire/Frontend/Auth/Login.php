@@ -37,7 +37,6 @@ class Login extends Component
 
         // Attempt to log the user in
         if (! Auth::attempt(['email' => $this->email, 'password' => $this->password, 'status' => 'active'], $this->remember)) {
-            $this->addError('email', 'These credentials do not match our records.');
 
             // Increment the failed login attempts counter
             RateLimiter::hit($this->throttleKey(), 60); // Locks for 60 seconds if limit hit
