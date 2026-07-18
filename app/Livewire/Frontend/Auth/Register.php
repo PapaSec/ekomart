@@ -2,8 +2,9 @@
 
 namespace App\Livewire\Frontend\Auth;
 
-use App\Models\User;
 use Illuminate\Support\Facades\{Auth, Hash};
+
+use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\{Layout, Title};
 
@@ -45,7 +46,7 @@ class Register extends Component
             'status'   => 'active', // Explicitly setting active state on onboarding
         ]);
 
-        // Senior Move: Attach Spatie database role immediately
+        // Attach Spatie database role immediately
         $user->assignRole('customer');
 
         // Log the fresh user directly into the system
