@@ -31,7 +31,7 @@ class Login extends Component
     {
         // Run validation rules
         $this->validate();
-
+            
         // Apply Brute-Force Rate Limiting
         $this->ensureIsNotRateLimited();
 

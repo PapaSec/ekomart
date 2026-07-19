@@ -1,4 +1,4 @@
-<div class="space-y-6">
+<div>
     {{-- Form Submission Wrapper linked to our register method --}}
     <form wire:submit.prevent="register" class="space-y-4">
         
@@ -71,7 +71,7 @@
             @enderror
         </div>
 
-        {{-- Password Grid (Password & Confirmation side-by-side on larger screens) --}}
+        {{-- Password Grid (Side-by-Side) --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {{-- Main Password --}}
             <div>
