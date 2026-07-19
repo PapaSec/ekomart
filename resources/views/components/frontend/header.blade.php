@@ -23,16 +23,20 @@
                 <div class="hidden md:flex flex-1 items-center gap-2.5 max-w-[640px] h-12 ml-8">
 
                     <!-- The Location Box Shell -->
-                    <div class="w-40 h-full bg-white border border-gray-200 rounded-[6px] flex items-center cursor-pointer hover:border-[#629D23] transition-colors group">
+                    <div
+                        class="w-40 h-full bg-white border border-gray-200 rounded-[6px] flex items-center cursor-pointer hover:border-[#629D23] transition-colors group">
                         {{-- Left: Icon Area with vertical divider --}}
                         <div class="h-full px-3 flex items-center justify-center border-r border-gray-200">
-                            <x-phosphor-map-pin class="size-5 text-gray-400 group-hover:text-[#629D23] transition-colors" />
+                            <x-phosphor-map-pin
+                                class="size-5 text-gray-400 group-hover:text-[#629D23] transition-colors" />
                         </div>
 
                         {{-- Right: Stacked Typography --}}
                         <div class="flex flex-col justify-center text-left pl-3 pr-2 select-none">
-                            <span class="text-[10px] font-medium text-gray-400 tracking-wide leading-none">Your location</span>
-                            <span class="text-xs font-bold text-gray-800 tracking-tight leading-none mt-1">Select Location</span>
+                            <span class="text-[10px] font-medium text-gray-400 tracking-wide leading-none">Your
+                                location</span>
+                            <span class="text-xs font-bold text-gray-800 tracking-tight leading-none mt-1">Select
+                                Location</span>
                         </div>
                     </div>
 
@@ -47,28 +51,88 @@
                 <div class="flex items-center gap-2 sm:gap-3">
 
                     {{-- User Account Info Button --}}
-                    <flux:button variant="outline"
-                        class="!h-12 !px-4 !rounded-[6px] !bg-white !text-zinc-800 !border-zinc-200 hover:!bg-[#2C3C28] hover:!border-[#2C3C28] transition-all duration-150 group">
-                        <div class="flex items-center gap-2.5">
-                            <div class="relative flex items-center justify-center size-5">
-                                <x-phosphor-user class="size-5 text-zinc-700 group-hover:hidden transition-colors" />
-                                <x-phosphor-user-bold class="size-5 text-white hidden group-hover:block transition-colors" />
+                    @guest
+                        {{-- Trigger for Guests: Opens the Slide-Out Auth Drawer --}}
+                        <flux:button variant="outline" @click="$dispatch('open-auth-drawer', { mode: 'login' })"
+                            class="!h-12 !px-4 !rounded-[6px] !bg-white !text-zinc-800 !border-zinc-200 hover:!bg-[#2C3C28] hover:!border-[#2C3C28] transition-all duration-150 group cursor-pointer">
+                            <div class="flex items-center gap-2.5">
+                                <div class="relative flex items-center justify-center size-5">
+                                    <x-phosphor-user class="size-5 text-zinc-700 group-hover:hidden transition-colors" />
+                                    <x-phosphor-user-bold
+                                        class="size-5 text-white hidden group-hover:block transition-colors" />
+                                </div>
 
-                                <span class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center min-w-4 h-4 px-1 text-[9px] font-bold text-white bg-red-500 rounded-full border border-white group-hover:border-[#2C3C28] transition-colors">
-                                    0
-                                </span>
+                                <div class="text-left select-none">
+                                    <span
+                                        class="block text-[10px] text-zinc-400 group-hover:text-zinc-300 leading-none transition-colors">
+                                        Sign In
+                                    </span>
+                                    <span
+                                        class="block text-sm font-semibold !text-zinc-800 group-hover:!text-white transition-colors leading-tight">
+                                        My Account
+                                    </span>
+                                </div>
                             </div>
+                        </flux:button>
+                    @endguest
 
-                            <div class="text-left select-none">
-                                <span class="block text-[10px] text-zinc-400 group-hover:text-zinc-300 leading-none transition-colors">
-                                    {{ auth()->check() ? 'Welcome back' : 'Sign In' }}
-                                </span>
-                                <span class="block text-sm font-semibold !text-zinc-800 group-hover:!text-white transition-colors leading-tight">
-                                    {{ auth()->check() ? auth()->user()->name : 'My Account' }}
-                                </span>
-                            </div>
-                        </div>
-                    </flux:button>
+                    @auth
+                        {{-- Trigger for Logged In Users: Renders a Dropdown Menu --}}
+                        <flux:dropdown>
+                            <flux:button variant="outline"
+                                class="!h-12 !px-4 !rounded-[6px] !bg-white !text-zinc-800 !border-zinc-200 hover:!bg-[#2C3C28] hover:!border-[#2C3C28] transition-all duration-150 group cursor-pointer">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="relative flex items-center justify-center size-5">
+                                        <x-phosphor-user
+                                            class="size-5 text-zinc-700 group-hover:hidden transition-colors" />
+                                        <x-phosphor-user-bold
+                                            class="size-5 text-white hidden group-hover:block transition-colors" />
+
+                                        {{-- Notification counter (e.g., messages, profile alerts) --}}
+                                        <span
+                                            class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center min-w-4 h-4 px-1 text-[9px] font-bold text-white bg-red-500 rounded-full border border-white group-hover:border-[#2C3C28] transition-colors">
+                                            0
+                                        </span>
+                                    </div>
+
+                                    <div class="text-left select-none">
+                                        <span
+                                            class="block text-[10px] text-zinc-400 group-hover:text-zinc-300 leading-none transition-colors">
+                                            Welcome back
+                                        </span>
+                                        <span
+                                            class="block text-sm font-semibold !text-zinc-800 group-hover:!text-white transition-colors leading-tight">
+                                            {{ auth()->user()->name }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </flux:button>
+
+                            {{-- Dropdown Menu Navigation Panel --}}
+                            <flux:menu class="w-48">
+                                <flux:menu.item href="{{ route('home') }}">
+                                    My Dashboard
+                                </flux:menu.item>
+
+                                <flux:menu.item href="#">
+                                    Order History
+                                </flux:menu.item>
+
+                                <flux:menu.separator />
+
+                                {{-- Secure Logout Item targeting our custom route --}}
+                                <flux:menu.item x-data @click="document.getElementById('logout-form').submit()"
+                                    variant="danger">
+                                    Log Out
+                                </flux:menu.item>
+                            </flux:menu>
+                        </flux:dropdown>
+
+                        {{-- Hidden native form to process the POST request securely --}}
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                    @endauth
 
                     {{-- Wishlist Button --}}
                     <flux:button variant="outline"
@@ -76,14 +140,17 @@
                         <div class="flex items-center gap-2.5">
                             <div class="relative flex items-center justify-center size-5">
                                 <x-phosphor-heart class="size-5 text-zinc-700 group-hover:hidden transition-colors" />
-                                <x-phosphor-heart-bold class="size-5 text-white hidden group-hover:block transition-colors" />
+                                <x-phosphor-heart-bold
+                                    class="size-5 text-white hidden group-hover:block transition-colors" />
 
-                                <span class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center min-w-4 h-4 px-1 text-[9px] font-bold text-white bg-[#629D23] rounded-full border border-white group-hover:border-[#2C3C28] transition-colors">
+                                <span
+                                    class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center min-w-4 h-4 px-1 text-[9px] font-bold text-white bg-[#629D23] rounded-full border border-white group-hover:border-[#2C3C28] transition-colors">
                                     0
                                 </span>
                             </div>
 
-                            <span class="text-sm font-semibold !text-zinc-800 group-hover:!text-white transition-colors select-none">
+                            <span
+                                class="text-sm font-semibold !text-zinc-800 group-hover:!text-white transition-colors select-none">
                                 Wishlist
                             </span>
                         </div>
@@ -94,15 +161,19 @@
                         class="!h-12 !px-4 !px-6 !rounded-[6px] !bg-white !text-zinc-800 !border-zinc-200 hover:!bg-[#2C3C28] hover:!border-[#2C3C28] transition-all duration-150 group">
                         <div class="flex items-center gap-2.5">
                             <div class="relative flex items-center justify-center size-5">
-                                <x-phosphor-shopping-cart class="size-5 text-zinc-700 group-hover:hidden transition-colors" />
-                                <x-phosphor-shopping-cart-bold class="size-5 text-white hidden group-hover:block transition-colors" />
+                                <x-phosphor-shopping-cart
+                                    class="size-5 text-zinc-700 group-hover:hidden transition-colors" />
+                                <x-phosphor-shopping-cart-bold
+                                    class="size-5 text-white hidden group-hover:block transition-colors" />
 
-                                <span class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center min-w-4 h-4 px-1 text-[9px] font-bold text-white bg-[#629D23] rounded-full border border-white group-hover:border-[#2C3C28] transition-colors">
+                                <span
+                                    class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center min-w-4 h-4 px-1 text-[9px] font-bold text-white bg-[#629D23] rounded-full border border-white group-hover:border-[#2C3C28] transition-colors">
                                     0
                                 </span>
                             </div>
 
-                            <span class="text-sm font-semibold !text-zinc-800 group-hover:!text-white transition-colors select-none">
+                            <span
+                                class="text-sm font-semibold !text-zinc-800 group-hover:!text-white transition-colors select-none">
                                 My Cart
                             </span>
                         </div>
