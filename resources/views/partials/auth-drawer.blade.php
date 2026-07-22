@@ -42,7 +42,7 @@
                     <div class="flex h-full flex-col bg-white shadow-2xl relative">
                         
                         {{-- 1. Brand Gradient Header --}}
-                        <div class="relative bg-gradient-to-br from-[#629D23] to-[#2C3C28] pt-10 pb-8 px-6 text-center text-white">
+                        <div class="relative bg-gradient-to-r from-[#629D23] to-[#2C3C28] pt-10 pb-8 px-6 text-center text-white">
                             
                             {{-- Close Button (X) --}}
                             <button 
