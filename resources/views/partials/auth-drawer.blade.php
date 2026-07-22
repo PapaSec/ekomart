@@ -102,14 +102,18 @@
                         <div class="relative flex-1 overflow-y-auto px-6 py-6">
                             
                             {{-- Login Form Container --}}
-                            <div x-show="authMode === 'login'" wire:key="drawer-login-container">
-                                <livewire:frontend.auth.login />
-                            </div>
+                            <template x-if="authMode === 'login'">
+                                <div class="space-y-6" wire:key="drawer-login-container">
+                                    <livewire:frontend.auth.login />
+                                </div>
+                            </template>
 
                             {{-- Register Form Container --}}
-                            <div x-show="authMode === 'register'" wire:key="drawer-register-container">
-                                <livewire:frontend.auth.register />
-                            </div>
+                            <template x-if="authMode === 'register'">
+                                <div class="space-y-6" wire:key="drawer-register-container">
+                                    <livewire:frontend.auth.register />
+                                </div>
+                            </template>
 
                         </div>
 
