@@ -51,38 +51,41 @@
         @enderror
     </div>
 
-    {{-- Password --}}
-    <div>
-        <label for="password" class="block text-xs font-bold uppercase text-zinc-700 tracking-wider mb-1.5">
-            Password <span class="text-red-500">*</span>
-        </label>
-        <input 
-            type="password" 
-            id="password" 
-            wire:model="password" 
-            placeholder="••••••••"
-            class="w-full px-3.5 py-2.5 rounded-lg border text-sm text-zinc-800 placeholder-zinc-400 transition-colors focus:outline-none focus:ring-2 @error('password') border-red-500 focus:ring-red-200 focus:border-red-500 @else border-zinc-200 focus:ring-emerald-500/20 focus:border-[#629D23] @enderror"
-        >
-        @error('password')
-            <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
-        @enderror
-    </div>
+    {{-- Password & Confirm Password Row --}}
+    <div class="grid grid-cols-2 gap-3">
+        {{-- Password --}}
+        <div>
+            <label for="password" class="block text-xs font-bold uppercase text-zinc-700 tracking-wider mb-1.5">
+                Password <span class="text-red-500">*</span>
+            </label>
+            <input 
+                type="password" 
+                id="password" 
+                wire:model="password" 
+                placeholder="••••••••"
+                class="w-full px-3.5 py-2.5 rounded-lg border text-sm text-zinc-800 placeholder-zinc-400 transition-colors focus:outline-none focus:ring-2 @error('password') border-red-500 focus:ring-red-200 focus:border-red-500 @else border-zinc-200 focus:ring-emerald-500/20 focus:border-[#629D23] @enderror"
+            >
+            @error('password')
+                <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
+            @enderror
+        </div>
 
-    {{-- Confirm Password --}}
-    <div>
-        <label for="password_confirmation" class="block text-xs font-bold uppercase text-zinc-700 tracking-wider mb-1.5">
-            Confirm Password <span class="text-red-500">*</span>
-        </label>
-        <input 
-            type="password" 
-            id="password_confirmation" 
-            wire:model="password_confirmation" 
-            placeholder="••••••••"
-            class="w-full px-3.5 py-2.5 rounded-lg border text-sm text-zinc-800 placeholder-zinc-400 transition-colors focus:outline-none focus:ring-2 @error('password_confirmation') border-red-500 focus:ring-red-200 focus:border-red-500 @else border-zinc-200 focus:ring-emerald-500/20 focus:border-[#629D23] @enderror"
-        >
-        @error('password_confirmation')
-            <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
-        @enderror
+        {{-- Confirm Password --}}
+        <div>
+            <label for="password_confirmation" class="block text-xs font-bold uppercase text-zinc-700 tracking-wider mb-1.5">
+                Confirm <span class="text-red-500">*</span>
+            </label>
+            <input 
+                type="password" 
+                id="password_confirmation" 
+                wire:model="password_confirmation" 
+                placeholder="••••••••"
+                class="w-full px-3.5 py-2.5 rounded-lg border text-sm text-zinc-800 placeholder-zinc-400 transition-colors focus:outline-none focus:ring-2 @error('password_confirmation') border-red-500 focus:ring-red-200 focus:border-red-500 @else border-zinc-200 focus:ring-emerald-500/20 focus:border-[#629D23] @enderror"
+            >
+            @error('password_confirmation')
+                <p class="text-xs text-red-600 mt-1 font-medium">{{ $message }}</p>
+            @enderror
+        </div>
     </div>
 
     {{-- Submit Button --}}
@@ -94,11 +97,8 @@
         >
             <span wire:loading.remove wire:target="register">Create Account</span>
             <span wire:loading wire:target="register" class="flex items-center gap-2">
-                <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Processing...
+                <i class="fas fa-spinner fa-spin"></i>
+                Registering...
             </span>
         </button>
     </div>
