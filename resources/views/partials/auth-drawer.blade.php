@@ -55,7 +55,7 @@
                                 </svg>
                             </button>
 
-                            {{-- Centered App Logo (Preserving original SVG shape dimensions) --}}
+                            {{-- Centered App Logo --}}
                             <div class="flex justify-center mb-4">
                                 <img 
                                     src="{{ asset('storage/logos/logo.svg') }}" 
@@ -102,23 +102,12 @@
                         <div class="relative flex-1 overflow-y-auto px-6 py-6">
                             
                             {{-- Login Form Container --}}
-                            <div 
-                                x-show="authMode === 'login'" 
-                                wire:key="drawer-login-view"
-                                x-transition:enter="transition ease-out duration-150" 
-                                x-transition:enter-start="opacity-0"
-                            >
+                            <div x-show="authMode === 'login'" wire:key="drawer-login-container">
                                 <livewire:frontend.auth.login />
                             </div>
 
                             {{-- Register Form Container --}}
-                            <div 
-                                x-show="authMode === 'register'" 
-                                wire:key="drawer-register-view"
-                                x-transition:enter="transition ease-out duration-150" 
-                                x-transition:enter-start="opacity-0"
-                                x-cloak
-                            >
+                            <div x-show="authMode === 'register'" wire:key="drawer-register-container">
                                 <livewire:frontend.auth.register />
                             </div>
 
