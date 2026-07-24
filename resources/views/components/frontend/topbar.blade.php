@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="flex items-center gap-1 cursor-pointer text-white/90 hover:text-white transition font-medium">
-                    <span>ZAR</span>
+                    <span>USD</span>
                     <x-phosphor-caret-down class="size-3 text-white/70" />
                 </div>
             </div>

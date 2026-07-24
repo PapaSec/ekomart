@@ -19,19 +19,17 @@
                     </a>
                 </div>
 
-                {{-- Center: Combined Location & Search Unit (Tighter Max Width + Left Margin Padding) --}}
+                {{-- Center: Combined Location & Search Unit (Desktop Only) --}}
                 <div class="hidden md:flex flex-1 items-center gap-2.5 max-w-[640px] h-12 ml-8">
 
                     <!-- The Location Box Shell -->
                     <div
                         class="w-40 h-full bg-white border border-gray-200 rounded-[6px] flex items-center cursor-pointer hover:border-[#629D23] transition-colors group">
-                        {{-- Left: Icon Area with vertical divider --}}
                         <div class="h-full px-3 flex items-center justify-center border-r border-gray-200">
                             <x-phosphor-map-pin
                                 class="size-5 text-gray-400 group-hover:text-[#629D23] transition-colors" />
                         </div>
 
-                        {{-- Right: Stacked Typography --}}
                         <div class="flex flex-col justify-center text-left pl-3 pr-2 select-none">
                             <span class="text-[10px] font-medium text-gray-400 tracking-wide leading-none">Your
                                 location</span>
@@ -40,19 +38,18 @@
                         </div>
                     </div>
 
-                    {{-- Search Component Shell (Takes remaining center space dynamically) --}}
+                    {{-- Search Component Shell --}}
                     <div class="flex-1 h-full">
                         <livewire:frontend.search-bar />
                     </div>
 
                 </div>
 
-                {{-- Right side: Actions Row (Account, Wishlist & My Cart) --}}
-                <div class="flex items-center gap-2 sm:gap-3">
+                {{-- Right side: Desktop Actions Row (Hidden on Mobile) --}}
+                <div class="hidden md:flex items-center gap-2 sm:gap-3">
 
                     {{-- User Account Info Button --}}
                     @guest
-                        {{-- Trigger for Guests: Opens the Slide-Out Auth Drawer --}}
                         <flux:button variant="outline" @click="$dispatch('open-auth-drawer', { mode: 'login' })"
                             class="!h-12 !px-4 !rounded-[6px] !bg-white !text-zinc-800 !border-zinc-200 hover:!bg-[#2C3C28] hover:!border-[#2C3C28] transition-all duration-150 group cursor-pointer">
                             <div class="flex items-center gap-2.5">
@@ -77,7 +74,6 @@
                     @endguest
 
                     @auth
-                        {{-- Trigger for Logged In Users: Renders a Dropdown Menu --}}
                         <flux:dropdown>
                             <flux:button variant="outline"
                                 class="!h-12 !px-4 !rounded-[6px] !bg-white !text-zinc-800 !border-zinc-200 hover:!bg-[#2C3C28] hover:!border-[#2C3C28] transition-all duration-150 group cursor-pointer">
@@ -88,7 +84,6 @@
                                         <x-phosphor-user-bold
                                             class="size-5 text-white hidden group-hover:block transition-colors" />
 
-                                        {{-- Notification counter (e.g., messages, profile alerts) --}}
                                         <span
                                             class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center min-w-4 h-4 px-1 text-[9px] font-bold text-white bg-red-500 rounded-full border border-white group-hover:border-[#2C3C28] transition-colors">
                                             0
@@ -108,7 +103,6 @@
                                 </div>
                             </flux:button>
 
-                            {{-- Dropdown Menu Navigation Panel --}}
                             <flux:menu class="w-48">
                                 <flux:menu.item href="{{ route('home') }}">
                                     My Dashboard
@@ -120,7 +114,6 @@
 
                                 <flux:menu.separator />
 
-                                {{-- Secure Logout Item targeting our custom route --}}
                                 <flux:menu.item x-data @click="document.getElementById('logout-form').submit()"
                                     variant="danger">
                                     Log Out
@@ -128,7 +121,6 @@
                             </flux:menu>
                         </flux:dropdown>
 
-                        {{-- Hidden native form to process the POST request securely --}}
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                             @csrf
                         </form>
@@ -180,6 +172,33 @@
                     </flux:button>
 
                 </div>
+
+                {{-- Right side: Mobile Actions Cluster (Visible ONLY on mobile/tablet) --}}
+                <div class="flex md:hidden items-center gap-2.5">
+
+                    {{-- Cart Button --}}
+                    <button type="button" 
+                        class="size-10 flex items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-800 shadow-xs hover:bg-zinc-100 transition-colors cursor-pointer"
+                        aria-label="Cart">
+                        <x-phosphor-shopping-cart class="size-5 text-zinc-700" />
+                    </button>
+
+                    {{-- Search Button --}}
+                    <button type="button" 
+                        class="size-10 flex items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-800 shadow-xs hover:bg-zinc-100 transition-colors cursor-pointer"
+                        aria-label="Search">
+                        <x-phosphor-magnifying-glass class="size-5 text-zinc-700" />
+                    </button>
+
+                    {{-- Hamburger Menu Button --}}
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" 
+                        class="size-10 flex items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-800 shadow-xs hover:bg-zinc-100 transition-colors cursor-pointer"
+                        aria-label="Toggle Menu">
+                        <x-phosphor-list class="size-5 text-zinc-700" />
+                    </button>
+
+                </div>
+
             </div>
         </div>
     </div>
