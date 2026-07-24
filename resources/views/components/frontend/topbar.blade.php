@@ -3,7 +3,7 @@
         <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
 
             {{-- Left Side: Quick Navigation --}}
-            <div class="flex items-center justify-center md:justify-start gap-4">
+            <div class="hidden lg:flex items-center gap-4">
                 <a href="#" class="flex items-center gap-1.5 text-white/90 hover:text-white transition font-medium">
                     <x-phosphor-map-pin-simple-area-light class="size-3.5 text-white/80" />
                     <span>Find Store</span>
