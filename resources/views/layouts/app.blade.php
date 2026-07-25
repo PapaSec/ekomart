@@ -50,6 +50,9 @@
     <!-- Header -->
     <x-frontend.header />
 
+    <!-- NavBar -->
+    <x-frontend.nav />
+
     <!-- Bottom Navigation -->
 
     <!-- Main Content -->
