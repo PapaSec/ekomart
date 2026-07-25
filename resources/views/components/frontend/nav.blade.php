@@ -1,22 +1,21 @@
 <nav class="bg-[#2C3C28] text-white font-medium sticky top-0 z-40" x-data="{ categoryOpen: false }">
     <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-14">
+        <div class="hidden lg:flex items-center justify-between h-14">
 
-            {{-- Left: All Categories Button & Dropdown Menu --}}
-            <div class="relative flex items-center h-full">
+            {{-- Left: All Categories Button & Dropdown Menu Wrapper (Set width to w-72 for perfect alignment) --}}
+            <div class="relative flex items-center h-full w-64 sm:w-64 flex-shrink-0">
                 
                 {{-- Category Button --}}
                 <button 
                     @click="categoryOpen = !categoryOpen"
                     @click.away="categoryOpen = false"
                     type="button"
-                    class="h-full px-6 bg-[#629D23] hover:bg-[#53861d] transition-colors flex items-center gap-8 text-white font-bold cursor-pointer select-none">
-                    <span class="text-xl">All Categories</span>
-                    {{-- Changed :class to x-bind:class so Blade ignores it --}}
-                    <x-phosphor-caret-down-bold class="size-4 transition-transform duration-200" x-bind:class="categoryOpen ? 'rotate-180' : ''" />
+                    class="w-full h-full px-5 bg-[#629D23] hover:bg-[#53861d] transition-colors flex items-center justify-between text-white font-bold cursor-pointer select-none">
+                    <span class="text-lg sm:text-xl font-bold tracking-tight">All Categories</span>
+                    <x-phosphor-caret-down-bold class="size-5 transition-transform duration-200" x-bind:class="categoryOpen ? 'rotate-180' : ''" />
                 </button>
 
-                {{-- Categories Vertical Menu (Drawer) --}}
+                {{-- Categories Vertical Menu (Drawer) - Matches button width via w-full --}}
                 <div 
                     x-show="categoryOpen"
                     x-transition:enter="transition ease-out duration-150"
@@ -25,7 +24,7 @@
                     x-transition:leave="transition ease-in duration-100"
                     x-transition:leave-start="opacity-100 scale-100"
                     x-transition:leave-end="opacity-0 scale-95"
-                    class="absolute top-full left-0 w-57 bg-white text-zinc-800 border border-[#629D23] shadow-xl rounded-b-lg overflow-hidden py-2 z-50"
+                    class="absolute top-full left-0 w-full bg-white text-zinc-800 border border-[#629D23] shadow-lg border-t-0 rounded-b-lg overflow-hidden py-2 z-50"
                     x-cloak>
                     
                     <ul class="text-sm font-semibold divide-y divide-zinc-100">
@@ -86,8 +85,8 @@
 
             </div>
 
-            {{-- Center: Navigation Links --}}
-            <div class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide ml-8">
+            {{-- Center: Navigation Links (Increased left margin ml-12 lg:ml-16 for better separation) --}}
+            <div class="hidden lg:flex items-center gap-8 lg:gap-10 text-md font-bold tracking-wide ml-12 lg:ml-16">
                 <a href="{{ route('home') }}" class="hover:text-[#629D23] transition-colors">Home</a>
                 <a href="#" class="hover:text-[#629D23] transition-colors">About</a>
                 <a href="#" class="hover:text-[#629D23] transition-colors">Shop</a>
