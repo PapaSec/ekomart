@@ -204,5 +204,5 @@
     </div>
 
     {{-- Mobile Drawer Partial --}}
-    @include('partials.mobile-drawer')
+    @include('layouts.partials.mobile-drawer')
 </header>
