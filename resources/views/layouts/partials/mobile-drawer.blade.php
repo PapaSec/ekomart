@@ -70,9 +70,6 @@
             <div x-show="activeTab === 'menu'" class="px-5 divide-y divide-zinc-100 text-zinc-700 font-semibold text-sm">
                 <div class="flex items-center justify-between py-3">
                     <a href="{{ route('home') }}" class="hover:text-[#629D23] transition-colors">Home</a>
-                    <button type="button" class="size-7 bg-[#629D23] text-white flex items-center justify-center rounded-xs hover:bg-[#53861d] transition-colors cursor-pointer">
-                        <x-phosphor-caret-down-bold class="size-3.5" />
-                    </button>
                 </div>
                 <div class="flex items-center justify-between py-3">
                     <a href="#" class="hover:text-[#629D23] transition-colors">About</a>
@@ -108,7 +105,7 @@
                             <span class="flex items-center gap-3">
                                 <x-phosphor-cooking-pot class="size-4 text-zinc-500" /> Breakfast & Dairy
                             </span>
-                            <x-phosphor-plus class="size-3.5 text-zinc-400" />
+                            <x-phosphor-plus class="size-3.5 text-zinc-400 bg-gray-100 rounded-full" />
                         </a>
                     </li>
                     <li>
@@ -116,7 +113,7 @@
                             <span class="flex items-center gap-3">
                                 <x-phosphor-fish class="size-4 text-zinc-500" /> Meats & Seafood
                             </span>
-                            <x-phosphor-plus class="size-3.5 text-zinc-400" />
+                            <x-phosphor-plus class="size-3.5 text-zinc-400 bg-gray-100 rounded-full" />
                         </a>
                     </li>
                     <li>
@@ -131,7 +128,7 @@
                             <span class="flex items-center gap-3">
                                 <x-phosphor-popcorn class="size-4 text-zinc-500" /> Chips & Snacks
                             </span>
-                            <x-phosphor-plus class="size-3.5 text-zinc-400" />
+                            <x-phosphor-plus class="size-3.5 text-zinc-400 bg-gray-100 rounded-full" />
                         </a>
                     </li>
                     <li>
