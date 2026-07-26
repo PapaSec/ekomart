@@ -1,6 +1,6 @@
 <nav class="bg-[#2C3C28] text-white font-medium sticky top-0 z-40" x-data="{ categoryOpen: false }">
     <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="hidden lg:flex items-center justify-between h-14">
+        <div class="hidden lg:flex items-center justify-between h-16">
 
             {{-- Left: All Categories Button & Dropdown Menu Wrapper (Set width to w-72 for perfect alignment) --}}
             <div class="relative flex items-center h-full w-64 sm:w-64 flex-shrink-0">
