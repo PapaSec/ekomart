@@ -10,7 +10,7 @@
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
         @click="mobileMenuOpen = false"
-        class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 lg:hidden">
+        class="fixed inset-0 bg-black/60 z-50 lg:hidden">
     </div>
 
     {{-- Slide-over Panel --}}
