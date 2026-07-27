@@ -1,12 +1,23 @@
 @import 'tailwindcss';
-
 @import "@fortawesome/fontawesome-free/css/all.css";
-
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
+/* Load your local font file */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/custom-font.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Register theme variables */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Overrides the default font-sans across your entire app */
+    --font-sans: 'CustomFont', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Custom utility class if you want to use `font-custom` explicitly */
+    --font-custom: 'CustomFont', sans-serif; 
 }

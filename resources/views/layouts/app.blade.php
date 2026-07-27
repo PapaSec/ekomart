@@ -43,7 +43,7 @@
     </style>
 </head>
 
-<body>
+<body class="font-sans antialiased text-slate-900 bg-white">
     <!-- Topbar -->
     <x-frontend.topbar />
 

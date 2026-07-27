@@ -98,7 +98,7 @@
 
             {{-- Right: Promotional Banner --}}
             <div class="hidden xl:flex items-center gap-2 text-sm font-bold tracking-wider ml-auto">
-                <span class="text-zinc-200">Get 30% Discount Now</span>
+                <span class="text-zinc-200 font-sans">Get 30% Discount Now</span>
                 <span class="bg-[#629D23] text-white px-2.5 py-1 rounded-full text-[10px] font-black uppercase">SALE</span>
             </div>
 
