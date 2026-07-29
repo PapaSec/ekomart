@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -36,6 +35,11 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->decimal('sale_price', 10, 2)->nullable();
             $table->integer('discount_percentage')->nullable(); // For the "25% Off" badge
+
+            // Add these columns to our existing products migration:
+            $table->decimal('rating', 3, 2)->default(0.00); // e.g. 4.85 stars
+            $table->unsignedInteger('reviews_count')->default(0); // e.g. 125 Reviews
+            $table->unsignedInteger('total_sales')->default(0); // For "Top Selling" widgets
 
             // Inventory & Gallery
             $table->integer('stock')->default(0);
