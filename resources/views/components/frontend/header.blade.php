@@ -1,5 +1,4 @@
 <header class="w-full bg-white" x-data="{ mobileMenuOpen: false, section: null }">
-
     {{-- Main Top Header Bar (White Bar) --}}
     <div class="py-4 border-b border-zinc-100">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
