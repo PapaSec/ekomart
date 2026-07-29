@@ -25,9 +25,6 @@ class Category extends Model
 
     /**
      * Get the attributes that should be cast.
-     * 
-     *
-     * @return array<string, string>
      */
     protected function casts(): array
     {
@@ -52,5 +49,21 @@ class Category extends Model
     public function scopeOrdered(Builder $query): Builder
     {
         return $query->orderBy('sort_order', 'asc');
+    }
+
+    /**
+     * Scope to filter active categories.
+     */
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->where('is_active', true);
+    }
+
+    /**
+     * Scope to filter featured categories.
+     */
+    public function scopeFeatured(Builder $query): Builder
+    {
+        return $query->where('is_featured', true);
     }
 }
