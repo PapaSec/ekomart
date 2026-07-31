@@ -2,23 +2,30 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
+use App\Models\Category;
 
 /**
- * @extends Factory<Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
 class CategoryFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Category::class;
+
     public function definition(): array
     {
+        $name = fake()->unique()->words(2, true);
+
         return [
-            //
+            'name'        => ucfirst($name),
+            'slug'        => Str::slug($name),
+            'icon'        => 'fas fa-shopping-basket',
+            'image'       => null,
+            'is_featured' => false,
+            'is_active'   => true,
+            'sort_order'  => fake()->numberBetween(1, 10),
         ];
     }
 }
