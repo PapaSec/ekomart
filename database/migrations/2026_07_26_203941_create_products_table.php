@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->foreignId('brand_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('vendor_id')->nullable()->constrained('users')->nullOnDelete();
 
-            // Basic Specs (As seen in Ekomart cards & modals)
+            // Basic Specs
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('sku')->unique()->nullable();
@@ -36,7 +36,7 @@ return new class extends Migration {
             $table->decimal('sale_price', 10, 2)->nullable();
             $table->integer('discount_percentage')->nullable(); // For the "25% Off" badge
 
-            // Add these columns to our existing products migration:
+            // Ratings & Widgets
             $table->decimal('rating', 3, 2)->default(0.00); // e.g. 4.85 stars
             $table->unsignedInteger('reviews_count')->default(0); // e.g. 125 Reviews
             $table->unsignedInteger('total_sales')->default(0); // For "Top Selling" widgets
