@@ -43,6 +43,10 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
+    /** 
+     * In Laravel Eloquent, any method starting with scope (like scopeActive or scopeFeatured) is recognized as a query scope on the model. Placing them together at the bottom keeps your relationships and casting rules neat and organized.
+     */
+
     /**
      * Scope to order categories by sort_order.
      */
