@@ -25,15 +25,15 @@
 
                 <div class="flex items-center flex-wrap gap-6">
                     <!-- Shop Now Button -->
-                    <a href="#" class="inline-flex items-center gap-2 bg-green-600 hover:bg-[#2C3C28] text-white font-semibold px-7 py-3.5 rounded-lg transition-all duration-300">
+                    <a href="#" class="inline-flex items-center gap-2 bg-[#629D23] hover:bg-[#2C3C28] text-white font-bold px-7 py-3.5 rounded-lg transition-all    duration-300">
                         <span>Shop Now</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
 
                     <!-- Price Tag -->
                     <div class="flex items-baseline gap-1.5">
-                        <span class="text-sm text-gray-700 font-medium">from</span>
-                        <span class="text-3xl sm:text-4xl font-extrabold text-gray-900">$80.99</span>
+                        <span class="text-sm text-[#2C3C28] font-medium">from</span>
+                        <span class="text-3xl sm:text-4xl font-bold text-[#2C3C28]">$80.99</span>
                     </div>
                 </div>
             </div>
