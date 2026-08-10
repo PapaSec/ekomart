@@ -9,14 +9,19 @@
             <!-- Left Side: Text Content -->
             <div class="lg:col-span-7 z-10 pb-12 lg:pb-16">
                 <!-- Subtitle -->
-                <span class="text-sm font-semibold text-black/70 tacking-wide block mb-3">
+                <span class="text-sm font-semibold text-[#2C3C28] tacking-wide block mb-3">
                     Get up to -30% off on your purchase
                 </span>
 
                 <!-- Main Title -->
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6">
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-[#2C3C28] leading-tight mb-4">
                     Buy From Different Kind <br class="hidden sm:inline"> of Grocery Store <br>
                 </h1>
+
+                <!-- Tagline -->
+                <p class="text-base text-[#2C3C28] font-medium mb-8">
+                    Don't miss these opportunities..
+                </p>
             </div>
         </div>
     </div>
