@@ -78,8 +78,6 @@
                 </div>
             </div>
 
-            
-
             <!-- Horizontal Slider Grid -->
             <div x-ref="categorySlider" class="flex gap-5 overflow-x-auto scroll-smooth pb-2 no-scrollbar"
                 style="scrollbar-width: none; -ms-overflow-style: none;">
@@ -88,7 +86,7 @@
                         class="min-w-[180px] sm:min-w-[200px] bg-[#F8F9FA] border border-gray-200/80 rounded-md p-5 flex flex-col items-center justify-between hover:shadow-md transition-all duration-300 group text-center flex-shrink-0">
 
                         <!-- Category Image / Icon -->
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
+                        <div class="w-26 h-26 mb-4 flex items-center justify-center">
                             @if ($category->image)
                                 <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
                                     class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
