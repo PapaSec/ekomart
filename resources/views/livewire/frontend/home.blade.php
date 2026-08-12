@@ -53,64 +53,72 @@
     <!-- Hero Banner Section End -->
 
     <!-- Featured Categories Section Start -->
-    <section class="py-12 bg-white" x-data="{
+    <section class="py-10 bg-[#f3f4f6]" x-data="{
         scroll(dir) {
-            $refs.categorySlider.scrollBy({ left: dir * 300, behavior: 'smooth' });
+            const container = $refs.categorySlider;
+            container.scrollBy({ left: dir * container.clientWidth, behavior: 'smooth' });
         }
     }">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Section Header with Border Line and Controls -->
-            <div class="flex items-center justify-between pb-4 mb-6 border-b border-gray-200">
-                <h3 class="text-2xl sm:text-3xl font-bold text-[#2C3C28]">
-                    Featured Categories
-                </h3>
+            <!-- Inner White Box Container -->
+            <div class="bg-white rounded-lg p-6 sm:p-8 border border-gray-100">
 
-                <div class="flex items-center gap-2">
-                    <button @click="scroll(-1)" type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-[#629D23] transition-colors bg-white text-gray-600">
-                        <i class="fas fa-chevron-left text-xs"></i>
-                    </button>
-                    <button @click="scroll(1)" type="button"
-                        class="w-9 h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-[#629D23] transition-colors bg-white text-gray-600">
-                        <i class="fas fa-chevron-right text-xs"></i>
-                    </button>
-                </div>
-            </div>
+                <!-- Section Header with Border Line and Controls -->
+                <div class="flex items-center justify-between pb-4 mb-6 border-b border-gray-200/80">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-[#2C3C28]">
+                        Featured Categories
+                    </h3>
 
-            <!-- Horizontal Slider Grid -->
-            <div x-ref="categorySlider" class="flex gap-5 overflow-x-auto scroll-smooth pb-2 no-scrollbar"
-                style="scrollbar-width: none; -ms-overflow-style: none;">
-                @forelse($featuredCategories as $category)
-                    <a href="{{ Route::has('shop') ? route('shop', ['category' => $category->slug]) : '#' }}"
-                        class="min-w-[180px] sm:min-w-[200px] bg-[#F8F9FA] border border-gray-200/80 hover:border-[#629D23] rounded-md p-5 flex flex-col items-center justify-between  hover:shadow-md transition-all duration-300 group text-center flex-shrink-0">
-
-                        <!-- Category Image / Icon -->
-                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
-                            @if ($category->image)
-                                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
-                                    class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
-                            @else
-                                <i
-                                    class="fas fa-leaf text-3xl text-gray-300 group-hover:text-[#629D23] transition-colors duration-300"></i>
-                            @endif
-                        </div>
-
-                        <!-- Category Details -->
-                        <div>
-                            <h4 class="font-bold text-[#2C3C28] text-sm line-clamp-1 mb-1">
-                                {{ $category->name }}
-                            </h4>
-                            <p class="text-[12px] font-bold text-[#629D23] uppercase tracking-wider">
-                                {{ $category->products_count ?? 0 }} ITEMS
-                            </p>
-                        </div>
-                    </a>
-                @empty
-                    <div class="col-span-full py-6 text-center text-gray-400">
-                        No featured categories found.
+                    <div class="flex items-center gap-2">
+                        <button @click="scroll(-1)" type="button"
+                            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-white hover:bg-[#629D23] transition-colors bg-white text-gray-600">
+                            <i class="fas fa-chevron-left text-xs"></i>
+                        </button>
+                        <button @click="scroll(1)" type="button"
+                            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-white hover:bg-[#629D23] transition-colors bg-white text-gray-600">
+                            <i class="fas fa-chevron-right text-xs"></i>
+                        </button>
                     </div>
-                @endforelse
+                </div>
+
+                <!-- Horizontal Slider (Strict 6 Columns on Desktop) -->
+                <div x-ref="categorySlider" class="flex gap-4 lg:gap-5 overflow-x-auto scroll-smooth no-scrollbar"
+                    style="scrollbar-width: none; -ms-overflow-style: none;">
+
+                    @forelse($featuredCategories as $category)
+                        <a href="{{ Route::has('shop') ? route('shop', ['category' => $category->slug]) : '#' }}"
+                            class="flex-shrink-0 w-[calc((100%-1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] lg:w-[calc((100%-5*1.25rem)/6)] bg-[#F8F9FA] border border-gray-200/80 hover:border-[#629D23] rounded-lg p-5 flex flex-col items-center justify-between hover:shadow-md transition-all duration-300 group text-center min-h-[190px]">
+
+                            <!-- Category Image / Icon -->
+                            <div class="w-20 h-20 sm:w-24 sm:h-24 my-auto flex items-center justify-center">
+                                @if ($category->image)
+                                    <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
+                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+                                @else
+                                    <i
+                                        class="fas fa-leaf text-3xl text-gray-300 group-hover:text-[#629D23] transition-colors duration-300"></i>
+                                @endif
+                            </div>
+
+                            <!-- Category Details -->
+                            <div class="w-full pt-2">
+                                <h4 class="font-bold text-[#2C3C28] text-xs sm:text-sm line-clamp-1 mb-1">
+                                    {{ $category->name }}
+                                </h4>
+                                <p class="text-[11px] sm:text-[12px] font-bold text-[#629D23] uppercase tracking-wider">
+                                    {{ $category->products_count ?? 0 }} ITEMS
+                                </p>
+                            </div>
+                        </a>
+                    @empty
+                        <div class="w-full py-8 text-center text-gray-400">
+                            No featured categories found.
+                        </div>
+                    @endforelse
+
+                </div>
+
             </div>
 
         </div>
