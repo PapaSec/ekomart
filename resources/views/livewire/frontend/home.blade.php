@@ -83,7 +83,7 @@
                 style="scrollbar-width: none; -ms-overflow-style: none;">
                 @forelse($featuredCategories as $category)
                     <a href="{{ Route::has('shop') ? route('shop', ['category' => $category->slug]) : '#' }}"
-                        class="min-w-[180px] sm:min-w-[200px] bg-[#F8F9FA] border border-gray-200/80 rounded-md p-5 flex flex-col items-center justify-between hover:shadow-md transition-all duration-300 group text-center flex-shrink-0">
+                        class="min-w-[180px] sm:min-w-[200px] bg-[#F8F9FA] border border-gray-200/80 hover:border-[#629D23] rounded-md p-5 flex flex-col items-center justify-between  hover:shadow-md transition-all duration-300 group text-center flex-shrink-0">
 
                         <!-- Category Image / Icon -->
                         <div class="w-24 h-24 mb-4 flex items-center justify-center">
