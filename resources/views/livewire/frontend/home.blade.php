@@ -52,14 +52,72 @@
     </div>
     <!-- Hero Banner Section End -->
 
-    <!-- Featured Categories -->
-    <section clasa="py-15 bg-white">
+    <!-- Featured Categories Section Start -->
+    <section class="py-12 bg-white" x-data="{
+        scroll(dir) {
+            $refs.categorySlider.scrollBy({ left: dir * 300, behavior: 'smooth' });
+        }
+    }">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#2C3C28] mb-8 text-left">
-                Featured Categories
-            </h3>
+
+            <!-- Section Header with Border Line and Controls -->
+            <div class="flex items-center justify-between pb-4 mb-6 border-b border-gray-200">
+                <h3 class="text-2xl sm:text-3xl font-bold text-[#2C3C28]">
+                    Featured Categories
+                </h3>
+
+                <div class="flex items-center gap-2">
+                    <button @click="scroll(-1)" type="button"
+                        class="w-9 h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-[#629D23] transition-colors bg-white text-gray-600">
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </button>
+                    <button @click="scroll(1)" type="button"
+                        class="w-9 h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-[#629D23] transition-colors bg-white text-gray-600">
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            
+
+            <!-- Horizontal Slider Grid -->
+            <div x-ref="categorySlider" class="flex gap-5 overflow-x-auto scroll-smooth pb-2 no-scrollbar"
+                style="scrollbar-width: none; -ms-overflow-style: none;">
+                @forelse($featuredCategories as $category)
+                    <a href="{{ Route::has('shop') ? route('shop', ['category' => $category->slug]) : '#' }}"
+                        class="min-w-[180px] sm:min-w-[200px] bg-[#F8F9FA] border border-gray-200/80 rounded-md p-5 flex flex-col items-center justify-between hover:shadow-md transition-all duration-300 group text-center flex-shrink-0">
+
+                        <!-- Category Image / Icon -->
+                        <div class="w-24 h-24 mb-4 flex items-center justify-center">
+                            @if ($category->image)
+                                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
+                                    class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+                            @else
+                                <i
+                                    class="fas fa-leaf text-3xl text-gray-300 group-hover:text-[#629D23] transition-colors duration-300"></i>
+                            @endif
+                        </div>
+
+                        <!-- Category Details -->
+                        <div>
+                            <h4 class="font-bold text-[#2C3C28] text-sm line-clamp-1 mb-1">
+                                {{ $category->name }}
+                            </h4>
+                            <p class="text-[12px] font-bold text-[#629D23] uppercase tracking-wider">
+                                {{ $category->products_count ?? 0 }} ITEMS
+                            </p>
+                        </div>
+                    </a>
+                @empty
+                    <div class="col-span-full py-6 text-center text-gray-400">
+                        No featured categories found.
+                    </div>
+                @endforelse
+            </div>
+
         </div>
     </section>
+    <!-- Featured Categories Section End -->
 
 
 </div>
