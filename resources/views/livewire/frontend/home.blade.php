@@ -117,5 +117,4 @@
     </section>
     <!-- Featured Categories Section End -->
 
-
 </div>
