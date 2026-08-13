@@ -87,15 +87,15 @@
             }
         }">
             <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100">
+                <div class="bg-white rounded-lg p-6 sm:p-8 border border-gray-100">
                     <div class="flex items-center justify-between pb-4 mb-6 border-b border-gray-200/80">
                         <h3 class="text-2xl sm:text-3xl font-bold text-[#2C3C28]">Featured Categories</h3>
                         <div class="flex items-center gap-2">
                             <button @click="scroll(-1)" type="button"
-                                class="w-9 h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-[#629D23] transition-colors bg-white text-gray-600"><i
+                                class="w-9 h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-white hover:bg-[#629D23] transition-colors bg-white text-gray-600"><i
                                     class="fas fa-chevron-left text-xs"></i></button>
                             <button @click="scroll(1)" type="button"
-                                class="w-9 h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-[#629D23] transition-colors bg-white text-gray-600"><i
+                                class="w-9 h-9 flex items-center justify-center rounded border border-gray-300 hover:border-[#629D23] hover:text-white hover:bg-[#629D23] transition-colors bg-white text-gray-600"><i
                                     class="fas fa-chevron-right text-xs"></i></button>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     <div x-ref="categorySlider" class="flex gap-4 lg:gap-5 overflow-x-auto scroll-smooth no-scrollbar">
                         @forelse($featuredCategories as $category)
                             <a href="{{ Route::has('shop') ? route('shop', ['category' => $category->slug]) : '#' }}"
-                                class="flex-shrink-0 w-[calc((100%-1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] lg:w-[calc((100%-5*1.25rem)/6)] bg-[#F8F9FA] border border-gray-200/80 hover:border-[#629D23] rounded-lg p-5 flex flex-col items-center justify-between hover:shadow-md transition-all duration-300 group text-center min-h-[190px]">
+                                class="flex-shrink-0 w-[calc((100%-1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] lg:w-[calc((100%-5*1.25rem)/6)] bg-[#F8F9FA] border border-gray-200/80 hover:border-[#629D23] rounded-md p-5 flex flex-col items-center justify-between hover:shadow-md transition-all duration-300 group text-center min-h-[190px]">
                                 <div class="w-20 h-20 sm:w-24 sm:h-24 my-auto flex items-center justify-center">
                                     @if ($category->image)
                                         <img src="{{ asset('storage/' . $category->image) }}"
@@ -141,27 +141,27 @@
                             <button @click="activeTab = 'all'"
                                 :class="activeTab === 'all' ? 'bg-[#629D23] text-white font-semibold' :
                                     'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-xs transition-colors whitespace-nowrap">All
+                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">All
                                 Items</button>
                             <button @click="activeTab = 'frozen'"
                                 :class="activeTab === 'frozen' ? 'bg-[#629D23] text-white font-semibold' :
                                     'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-xs transition-colors whitespace-nowrap">Frozen
+                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">Frozen
                                 Foods</button>
                             <button @click="activeTab = 'diet'"
                                 :class="activeTab === 'diet' ? 'bg-[#629D23] text-white font-semibold' :
                                     'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-xs transition-colors whitespace-nowrap">Diet
+                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">Diet
                                 Foods</button>
                             <button @click="activeTab = 'healthy'"
                                 :class="activeTab === 'healthy' ? 'bg-[#629D23] text-white font-semibold' :
                                     'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-xs transition-colors whitespace-nowrap">Healthy
+                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">Healthy
                                 Foods</button>
                             <button @click="activeTab = 'vitamin'"
                                 :class="activeTab === 'vitamin' ? 'bg-[#629D23] text-white font-semibold' :
                                     'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-xs transition-colors whitespace-nowrap">Vitamin
+                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">Vitamin
                                 Items</button>
                         </div>
                     </div>

@@ -5,11 +5,11 @@
      x-transition:leave="transition ease-in duration-200"
      x-transition:leave-start="opacity-100"
      x-transition:leave-end="opacity-0"
-     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60"
      x-cloak>
 
     <div @click.away="showModal = false"
-         class="bg-white rounded-2xl max-w-4xl w-full p-6 sm:p-8 relative shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+         class="bg-white rounded-xl max-w-4xl w-full p-6 sm:p-8 relative shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
 
         <!-- Close Button -->
         <button @click="showModal = false" type="button"
