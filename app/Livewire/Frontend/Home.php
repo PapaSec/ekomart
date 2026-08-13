@@ -24,6 +24,7 @@ class Home extends Component
             // Weekly Best Selling Groceries
             'bestSellers' => Product::active()
                 ->inStock()
+                ->with('category') 
                 ->orderByDesc('total_sales')
                 ->take(10)
                 ->get(),
