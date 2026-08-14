@@ -123,23 +123,36 @@
                     <div x-ref="categorySlider" class="flex gap-4 lg:gap-5 overflow-x-auto scroll-smooth no-scrollbar">
                         @forelse($featuredCategories as $category)
                             <a href="{{ Route::has('shop') ? route('shop', ['category' => $category->slug]) : '#' }}"
-                                class="flex-shrink-0 w-[calc((100%-1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] lg:w-[calc((100%-5*1.25rem)/6)] bg-[#F8F9FA] border border-gray-200/80 hover:border-[#629D23] rounded-md p-5 flex flex-col items-center justify-between hover:shadow-md transition-all duration-300 group text-center min-h-[190px]">
-                                <div class="w-20 h-20 sm:w-24 sm:h-24 my-auto flex items-center justify-center">
-                                    @if ($category->image)
-                                        <img src="{{ asset('storage/categories/' . $category->image) }}"
-                                            alt="{{ $category->name }}"
-                                            class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
-                                    @else
-                                        <i
-                                            class="fas fa-leaf text-3xl text-gray-300 group-hover:text-[#629D23] transition-colors duration-300"></i>
-                                    @endif
-                                </div>
-                                <div class="w-full pt-2">
-                                    <h4 class="font-bold text-[#2C3C28] text-xs sm:text-sm line-clamp-1 mb-1">
-                                        {{ $category->name }}</h4>
-                                    <p
-                                        class="text-[11px] sm:text-[12px] font-bold text-[#629D23] uppercase tracking-wider">
-                                        {{ $category->products_count ?? 0 }} ITEMS</p>
+                                class="flex-shrink-0 w-[calc((100%-1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] lg:w-[calc((100%-4*1.25rem)/5)] bg-white border border-gray-200/90 hover:border-[#629D23] rounded-2xl p-2 flex flex-col hover:shadow-md transition-all duration-300 group text-center">
+
+                                {{-- Inner Light Gray Container --}}
+                                <div
+                                    class="bg-[#F8F9FA] rounded-xl p-3 sm:p-4 flex flex-col items-center justify-between h-full w-full min-h-[165px]">
+
+                                    {{-- Image / Icon (slightly scaled to fit reduced height) --}}
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 my-auto flex items-center justify-center">
+                                        @if ($category->image)
+                                            <img src="{{ asset('storage/' . $category->image) }}"
+                                                alt="{{ $category->name }}"
+                                                class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+                                        @else
+                                            <i
+                                                class="fas fa-leaf text-2xl text-gray-300 group-hover:text-[#629D23] transition-colors duration-300"></i>
+                                        @endif
+                                    </div>
+
+                                    {{-- Category Details --}}
+                                    <div class="w-full pt-1.5">
+                                        <h4
+                                            class="font-bold text-[#2C3C28] text-xs sm:text-sm leading-tight mb-1 line-clamp-1">
+                                            {{ $category->name }}
+                                        </h4>
+                                        <p
+                                            class="text-[11px] sm:text-[12px] font-bold text-[#629D23] uppercase tracking-wider">
+                                            {{ $category->products_count ?? 0 }} ITEMS
+                                        </p>
+                                    </div>
+
                                 </div>
                             </a>
                         @empty
