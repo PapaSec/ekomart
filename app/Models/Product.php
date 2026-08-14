@@ -104,6 +104,24 @@ class Product extends Model
         return asset('images/placeholder.png');
     }
 
+    /**
+     * Calculate discount percentage dynamically.
+     * Returns null if no valid discount exists.
+     */
+    public function getDiscountPercentageAttribute(): ?int
+    {
+        if (
+    !$this->sale_price
+    || ($this->sale !== null && $this->sale->price >= $this->price)
+    || $this->price <= 0
+) {
+            return null;
+        }
+
+        $discount = (($this->price - $this->sale_price) / $this->price) * 100;
+        return (int) round($discount);
+    }
+
     // Query Scopes
     public function scopeActive($query)
     {

@@ -13,6 +13,15 @@ class ProductsTable
             ->columns([
                 ImageColumn::make('image')
                     ->disk('public'),
+                TextColumn::make('discount_percentage')
+                    ->label('Discount')
+                    ->formatStateUsing(fn ($state) => $state ? "{$state}% OFF" : '—')
+                    ->badge()
+                    ->color(fn ($state) => $state ? 'danger' : 'gray'),
+
+                TextColumn::make('unit')
+                    ->placeholder('500g Pack')
+                    ->sortable(),
 
                 TextColumn::make('name')
                     ->searchable()
