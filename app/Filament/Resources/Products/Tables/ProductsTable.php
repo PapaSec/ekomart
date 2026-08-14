@@ -23,12 +23,15 @@ class ProductsTable
                     ->sortable()
                     ->searchable(),
 
+                // Replaced ->money('USD') to bypass intl
                 TextColumn::make('price')
-                    ->money('USD')
+                    ->prefix('$')
+                    ->numeric(decimalPlaces: 2)
                     ->sortable(),
 
                 TextColumn::make('sale_price')
-                    ->money('USD')
+                    ->prefix('$')
+                    ->numeric(decimalPlaces: 2)
                     ->sortable()
                     ->placeholder('-'),
 

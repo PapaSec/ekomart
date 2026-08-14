@@ -126,7 +126,7 @@
                                 class="flex-shrink-0 w-[calc((100%-1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] lg:w-[calc((100%-5*1.25rem)/6)] bg-[#F8F9FA] border border-gray-200/80 hover:border-[#629D23] rounded-md p-5 flex flex-col items-center justify-between hover:shadow-md transition-all duration-300 group text-center min-h-[190px]">
                                 <div class="w-20 h-20 sm:w-24 sm:h-24 my-auto flex items-center justify-center">
                                     @if ($category->image)
-                                        <img src="{{ asset('storage/' . $category->image) }}"
+                                        <img src="{{ Storage::disk('public')->url($category->image) }}"
                                             alt="{{ $category->name }}"
                                             class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
                                     @else
