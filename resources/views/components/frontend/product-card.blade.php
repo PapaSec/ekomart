@@ -13,8 +13,8 @@
             </div>
         @endif
 
-        <!-- Image -->
-        <a href="#" class="w-full h-full flex items-center justify-center p-2">
+        <!-- Image Link (Redirects to Cart Page) -->
+        <a href="{{ route('cart') }}" class="w-full h-full flex items-center justify-center p-2">
             @if ($product->image)
                 <img src="{{ \Illuminate\Support\Facades\Storage::url($product->image) }}" alt="{{ $product->name }}"
                     class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
@@ -25,17 +25,6 @@
 
         <!-- Green Hover Action Bar -->
         <div class="absolute bottom-0 left-0 right-0 bg-[#629D23] rounded-t-2xl pt-3 pb-2.5 px-3 flex items-center justify-center gap-2 sm:gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-
-            <!-- Add to Cart Button -->
-            <div class="relative group/btn">
-                <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#4e7d1b] text-white text-[11px] font-semibold px-2.5 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity duration-200 pointer-events-none z-30 after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#4e7d1b]">
-                    Add To Cart
-                </div>
-                <button type="button" wire:click="$dispatch('add-to-cart', { productId: {{ $product->id }} })"
-                    class="w-9 h-9 rounded-full border border-dashed border-white/80 text-white flex items-center justify-center hover:bg-white hover:text-[#629D23] hover:border-transparent transition-all duration-200 shadow-sm">
-                    <i class="fas fa-shopping-basket text-sm"></i>
-                </button>
-            </div>
 
             <!-- Wishlist Button -->
             <div class="relative group/btn">
@@ -80,7 +69,7 @@
     <div class="flex flex-col flex-grow justify-between">
         <div>
             <h4 class="font-bold text-[#2C3C28] text-xs sm:text-sm line-clamp-2 mb-1 group-hover:text-[#629D23] transition-colors leading-snug">
-                <a href="#">{{ $product->name }}</a>
+                <a href="{{ route('cart') }}">{{ $product->name }}</a>
             </h4>
             <p class="text-[11px] text-gray-400 mb-2">
                 {{ $product->unit ?? '500g Pack' }}
