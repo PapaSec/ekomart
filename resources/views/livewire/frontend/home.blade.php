@@ -59,11 +59,31 @@
         modalImage: '',
         modalQty: 1,
     
+        // Compare Modal State
+        showCompareModal: false,
+        compareItems: [],
+    
         openQuickView(product) {
             this.selectedProduct = product;
             this.modalImage = product.image ? '{{ asset('storage') }}/' + product.image : '';
             this.modalQty = 1;
             this.showModal = true;
+        },
+    
+        addToCompare(product) {
+            // Prevent duplicates
+            if (!this.compareItems.some(item => item.id === product.id)) {
+                // Keep max 4 items for layout neatness
+                if (this.compareItems.length >= 4) {
+                    this.compareItems.shift();
+                }
+                this.compareItems.push(product);
+            }
+            this.showCompareModal = true;
+        },
+    
+        removeFromCompare(index) {
+            this.compareItems.splice(index, 1);
         }
     }">
 
@@ -180,6 +200,9 @@
 
         <!-- Quick View Modal Component -->
         <x-frontend.quick-view-modal />
+
+        <!-- Compare Products Modal Component -->
+        <x-frontend.compare-modal />
 
     </div>
 

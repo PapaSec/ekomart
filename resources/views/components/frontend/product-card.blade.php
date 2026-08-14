@@ -1,7 +1,7 @@
 @props(['product'])
 
 <div
-    class="bg-white border border-gray-200/80 hover:border-[#629D23] rounded-lg p-3 sm:p-4 flex flex-col justify-between hover:shadow-md transition-all duration-300 group relative">
+    class="bg-white border border-gray-200 rounded-lg p-3 sm:p-4 flex flex-col justify-between hover:shadow-md transition-all duration-300 group relative">
 
     <!-- Top Image Area -->
     <div class="relative w-full h-40 sm:h-44 mb-3 flex items-center justify-center bg-white rounded-md overflow-hidden">
@@ -14,7 +14,7 @@
                 <span class="font-bold text-[11px] block -mt-0.5">Off</span>
             </div>
         @endif
-        
+
         <!-- Image -->
         <a href="#" class="w-full h-full flex items-center justify-center p-2">
             @if ($product->image)
@@ -31,12 +31,11 @@
 
             <!-- Wishlist Button -->
             <div class="relative group/btn">
-                <!-- Hover Tooltip Popup -->
                 <div
                     class="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#4e7d1b] text-white text-[11px] font-semibold px-2.5 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity duration-200 pointer-events-none z-30 after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#4e7d1b]">
                     Add To Wishlist
                 </div>
-                <button type="button"
+                <button type="button" wire:click="$dispatch('add-to-wishlist', { productId: {{ $product->id }} })"
                     class="w-9 h-9 rounded-full border border-dashed border-white/80 text-white flex items-center justify-center hover:bg-white hover:text-[#629D23] hover:border-transparent transition-all duration-200 shadow-sm"
                     title="Add to Wishlist">
                     <i class="far fa-heart text-sm"></i>
@@ -45,12 +44,11 @@
 
             <!-- Compare Button -->
             <div class="relative group/btn">
-                <!-- Hover Tooltip Popup -->
                 <div
                     class="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#4e7d1b] text-white text-[11px] font-semibold px-2.5 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity duration-200 pointer-events-none z-30 after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#4e7d1b]">
                     Compare
                 </div>
-                <button type="button"
+                <button type="button" @click="addToCompare({{ json_encode($product) }})"
                     class="w-9 h-9 rounded-full border border-dashed border-white/80 text-white flex items-center justify-center hover:bg-white hover:text-[#629D23] hover:border-transparent transition-all duration-200 shadow-sm"
                     title="Compare">
                     <i class="fas fa-sync-alt text-sm"></i>
