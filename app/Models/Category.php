@@ -63,6 +63,18 @@ class Category extends Model
         return $query->where('is_active', true);
     }
 
+    public function getImageUrlAttribute(): ?string
+    {
+        if (! $this->image) {
+            return null;
+        }
+
+        // Prepend 'categories/' if the stored string is missing it
+        $path = str_contains($this->image, '/') ? $this->image : 'categories/' . $this->image;
+
+        return asset('storage/' . $path);
+    }
+
     /**
      * Scope to filter featured categories.
      */
