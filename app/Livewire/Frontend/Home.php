@@ -51,7 +51,7 @@ class Home extends Component
                 ->inStock()
                 ->with('category') 
                 ->orderByDesc('total_sales')
-                ->take(10)
+                ->take(12)
                 ->get(),
 
             // Hand Picked 10% Offer Items
