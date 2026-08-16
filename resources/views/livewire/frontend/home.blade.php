@@ -64,11 +64,14 @@
         compareItems: [],
     
         openQuickView(product) {
-            this.selectedProduct = product;
-            this.modalImage = product.image ? '{{ asset('storage') }}/' + product.image : '';
-            this.modalQty = 1;
-            this.showModal = true;
-        },
+        this.selectedProduct = product;
+        this.modalQty = 1;
+
+        // Uses the appended first_image accessor directly
+        this.modalImage = product.first_image || '/images/placeholder.png';
+
+        this.showModal = true;
+    },
     
         addToCompare(product) {
             // Prevent duplicates

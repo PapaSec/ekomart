@@ -39,6 +39,8 @@ class Product extends Model
     /** @use HasFactory<ProductFactory> */
     use HasFactory, SoftDeletes;
 
+    protected $appends = ['first_image'];
+
     protected function casts(): array
     {
         return [
@@ -95,15 +97,21 @@ class Product extends Model
      */
     public function getFirstImageAttribute(): string
     {
-        if ($this->featured_image) {
-            return asset('storage/' . $this->featured_image);
+        $image = $this->featured_image;
+
+        if (!$image && !empty($this->images) && is_array($this->images)) {
+            $image = $this->images[0] ?? null;
         }
 
-        if (!empty($this->images)) {
-            return asset('storage/' . $this->images[0]);
+        if (!$image) {
+            return asset('images/placeholder.png');
         }
 
-        return asset('images/placeholder.png');
+        if (str_starts_with($image, 'http://') || str_starts_with($image, 'https://')) {
+            return $image;
+        }
+
+        return asset('storage/' . ltrim($image, '/'));
     }
 
     /**
