@@ -26,7 +26,6 @@
         <!-- Green Hover Action Bar -->
         <div class="absolute bottom-0 left-0 right-0 bg-[#629D23] rounded-t-2xl pt-3 pb-2.5 px-3 flex items-center justify-center gap-2 sm:gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
 
-
             <!-- Wishlist Button -->
             <div class="relative group/btn">
                 <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#4e7d1b] text-white text-[11px] font-semibold px-2.5 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity duration-200 pointer-events-none z-30 after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#4e7d1b]">
