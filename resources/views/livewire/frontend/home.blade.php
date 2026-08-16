@@ -166,53 +166,7 @@
             </div>
         </section>
 
-        <!-- 2. Weekly Best Selling Groceries Section -->
-        <section class="py-10 bg-[#f3f4f6]" x-data="{ activeTab: 'all' }">
-            <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100">
-                    <div
-                        class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-gray-200/80 gap-4">
-                        <h3 class="text-2xl sm:text-3xl font-bold text-[#2C3C28]">Weekly Best Selling Groceries</h3>
-                        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-                            <button @click="activeTab = 'all'"
-                                :class="activeTab === 'all' ? 'bg-[#629D23] text-white font-semibold' :
-                                    'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">All
-                                Items</button>
-                            <button @click="activeTab = 'frozen'"
-                                :class="activeTab === 'frozen' ? 'bg-[#629D23] text-white font-semibold' :
-                                    'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">Frozen
-                                Foods</button>
-                            <button @click="activeTab = 'diet'"
-                                :class="activeTab === 'diet' ? 'bg-[#629D23] text-white font-semibold' :
-                                    'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">Diet
-                                Foods</button>
-                            <button @click="activeTab = 'healthy'"
-                                :class="activeTab === 'healthy' ? 'bg-[#629D23] text-white font-semibold' :
-                                    'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">Healthy
-                                Foods</button>
-                            <button @click="activeTab = 'vitamin'"
-                                :class="activeTab === 'vitamin' ? 'bg-[#629D23] text-white font-semibold' :
-                                    'text-gray-600 hover:text-[#629D23] font-medium'"
-                                class="px-4 py-1.5 rounded-full text-sm transition-colors whitespace-nowrap">Vitamin
-                                Items</button>
-                        </div>
-                    </div>
-
-                    <!-- Product Grid -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                        @forelse($bestSellers as $product)
-                            <x-frontend.product-card :product="$product" />
-                        @empty
-                            <div class="col-span-full py-8 text-center text-gray-400">No products found.</div>
-                        @endforelse
-                    </div>
-                </div>
-            </div>
-        </section>
+        <livewire:weekly-best-sellers />
 
         <!-- Quick View Modal Component -->
         <x-frontend.quick-view-modal />
