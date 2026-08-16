@@ -48,7 +48,7 @@ class Product extends Model
             'sale_price' => 'decimal:2',
             'discount_percentage' => 'integer',
             'stock' => 'integer',
-            'sort_order' => 'sort_order',
+            'sort_order' => 'integer',
             'is_active' => 'boolean',
             'is_featured' => 'boolean',
             'in_stock' => 'boolean',

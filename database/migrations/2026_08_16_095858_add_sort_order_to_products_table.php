@@ -12,17 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->integer('sort_order')->default(0)->after('stock');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->dropColumn('sort_order');
         });
     }
 };
